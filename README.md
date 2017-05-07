@@ -1,3 +1,3 @@
 # SimulatedAnnealing
 Simulated Annealing
-<video src="sim_ann_simple.mp4" width="320" height="200" controls preload></video>
+![alt text](https://raw.githubusercontent.com/JeromeBau/SimulatedAnnealing/master/simulated_annealing_example.gif)
