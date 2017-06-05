@@ -23,20 +23,38 @@ Important distinction to many other algorithms that attempt to determine an opti
 A threshold depending on the temperature will stop the algorithm. 
 
 ## Application: Finding the global optimum of a continuous function
+<p align="center">
+<img src="https://raw.githubusercontent.com/JeromeBau/SimulatedAnnealing/master/simulated_annealing_example.gif" alt='Simple example for a simulated annealing algorithm'/>
+</p>
+
 
 To find the optimum of a continous function, two things are adapted with respect to the general simulated annealing algorithm:
 
 (1) Energy function <br>
-The energy function corresponds straight to the continuous function of which we want to find he optimum.
+The energy function corresponds straight to the continuous function of which we want to find the optimum.
+
+``` Python
+def energy(self, s):
+""" State energery / Cost function """
+return 0.01*s**2 + 40 * np.sin(0.3*s)
+```
 
 (2) Neighbor function <br>
 A neighbor can be selected through different methods. Here I decide to choose a neighbor by selecting a random point in proximity of the current point. This can be done using a uniform distribution (hence giving each neighbor the same chance) or a normal distribution (giving closer neighbors better chances). The choice of variance parameter is clearly of high significance: The higher the variance, the larger the "jumps" from one neighbor to another. 
 
+``` Python
+def neighbor(self, s, method='normal'):
+""" Return a random neighbor
+Possible neighbor functions:
+(1) Uniform distributed random neighbor
+(2) Normally distributed random neighbor
+"""
+if method == 'uniform':
+    return s + random.uniform(-100, 100)
+elif method == 'normal':
+    return s + random.normal(0, 100)
+```
 
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/JeromeBau/SimulatedAnnealing/master/simulated_annealing_example.gif" alt='Simple example for a simulated annealing algorithm'/>
-</p>
 
 
 ## Modification for discrete search space
