@@ -22,38 +22,38 @@ class SimulatedAnnealing(object):
         """ State energery / Cost function """
         return 0.01*s**2 + 40 * np.sin(0.3*s)
 
-    def neighbor(self, s):
+    def neighbor(self, s, method='normal'):
         """ Return a random neighbor
         Possible neighbor functions:
         (1) Uniform distributed random neighbor
         (2) Normally distributed random neighbor
         """
-        if self.neighbor_function == 'uniform':
+        if method == 'uniform':
             return s + random.uniform(-100, 100)
-        elif self.neighbor_function == 'normal':
+        elif method == 'normal':
             return s + random.normal(0, 100)
 
     @staticmethod
-    def acceptance_probability(energy_old, energy_new, T):
+    def acceptance_probability(energy_old, energy_new, t):
         """ Returns an acceptance probability
         Based on the comparison of old and new value and the according temperature
-        """"
-        return np.exp((energy_old-energy_new)/T)
+        """
+        return np.exp((energy_old-energy_new)/t)
 
     def anneal(self, state):
         """ Annealing process """
         self.state_evolution.append(state)
         energy_old = self.energy(state)
-        T = self.temperature_initial
-        while T > self.temperature_terminal:
+        t = self.temperature_initial
+        while t > self.temperature_terminal:
             n = 1
             while n < 200:
                 new_state = self.neighbor(state)
                 energy_new = self.energy(new_state)
-                if self.acceptance_probability(energy_old, energy_new, T) > random.random():
+                if self.acceptance_probability(energy_old, energy_new, t) > random.random():
                     state = new_state
                     energy_old = energy_new
                     self.state_evolution.append(new_state)
                 n += 1
-            T = T*self.cooling_rate
+            t *= self.cooling_rate
         return state, energy_old
