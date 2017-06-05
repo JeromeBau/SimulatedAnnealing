@@ -3,7 +3,7 @@ import numpy as np
 from numpy import random
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-<<<<<<< HEAD
+
 
 
 class SimulatedAnnealingSimple(object):
@@ -16,7 +16,6 @@ from scipy import constants
 class SimulatedAnnealing(object):
     """
     Class that applies Simulated Annealing to a continuous optimization problem of a simple function
->>>>>>> 7a3f21adf5c08d0b40fe6a35d4c7b43fd69277d6
     """
     def __init__(self):
         self.kmax=100
