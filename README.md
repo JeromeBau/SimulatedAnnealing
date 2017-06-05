@@ -27,9 +27,11 @@ A threshold depending on the temperature will stop the algorithm.
 To find the optimum of a continous function, two things are adapted with respect to the general simulated annealing algorithm:
 
 (1) Energy function
+
 The energy function corresponds straight to the continuous function of which we want to find he optimum.
 
 (2) Neighbor function
+
 A neighbor can be selected through different methods. Here I decide to choose a neighbor by selecting a random point in proximity of the current point. This can be done using a uniform distribution (hence giving each neighbor the same chance) or a normal distribution (giving closer neighbors better chances). The choice of variance parameter is clearly of high significance: The higher the variance, the larger the "jumps" from one neighbor to another. 
 
 
