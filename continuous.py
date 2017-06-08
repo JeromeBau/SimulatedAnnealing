@@ -13,21 +13,23 @@ class SimulatedAnnealing(object):
     def __init__(self):
         self.kmax=100
         self.state_evolution = []
-        self.neighbor_function = 'normal'
         self.temperature_initial = 1.0
         self.temperature_terminal = 0.0001
         self.cooling_rate = 0.9
 
-    def energy(self, s):
+    @staticmethod
+    def energy(s):
         """ State energery / Cost function """
         return 0.01*s**2 + 40 * np.sin(0.3*s)
 
-    def neighbor(self, s, method='normal'):
+    @staticmethod
+    def neighbor(s, method='normal'):
         """ Return a random neighbor
         Possible neighbor functions:
         (1) Uniform distributed random neighbor
         (2) Normally distributed random neighbor
         """
+        assert type(s) == float or type(s) == int, 's was not of the correct type - int or float expected'
         if method == 'uniform':
             return s + random.uniform(-100, 100)
         elif method == 'normal':
