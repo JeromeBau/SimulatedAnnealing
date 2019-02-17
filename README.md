@@ -94,5 +94,5 @@ result_binary = v.anneal()
 result_variable = v.translate_to_variables(result_binary)
 ```
 
-This results in: [0, 1, 5, 12, 16]
+This results in the selection of: [0, 1, 5, 12, 16]
 
