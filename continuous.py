@@ -1,8 +1,12 @@
-import random
+import random as rnd
 import numpy as np
 from numpy import random
+
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
+
+# import matplotlib.animation as animation
 from scipy import constants
 
 
@@ -20,7 +24,7 @@ class SimulatedAnnealing(object):
     @staticmethod
     def energy(s):
         """ State energery / Cost function """
-        return 0.01*s**2 + 40 * np.sin(0.3*s)
+        return 0.01*s**2 + 40 * np.sin(0.333333*s)
 
     @staticmethod
     def neighbor(s, method='normal'):

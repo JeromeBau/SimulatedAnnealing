@@ -55,7 +55,7 @@ class SimulatedAnnealingGibbs(object):
         """ Given a boolean vector [1,0,1,1,..] chose variables accordingly"""
         return self.variable_list[pd.Series(vec) == 1].tolist()
 
-    def energy(self, measure='aic', on='subset'):
+    def energy(self, measure='bic', on='subset'):
         """ Energy function of the annealing progress
         Calculate an OLS model for either 'subset' (current state) or 'neighbor' (alternative state).
         Measures the costs of the current model using either 'aic' or 'bic'
